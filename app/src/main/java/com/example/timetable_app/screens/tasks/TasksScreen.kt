@@ -50,7 +50,6 @@ fun TasksScreen(
     tasks = tasks.value,
     options = options,
     onAddClick = viewModel::onAddClick,
-    onStatsClick = viewModel::onStatsClick,
     onSettingsClick = viewModel::onSettingsClick,
     onTaskCheckChange = viewModel::onTaskCheckChange,
     onTaskActionClick = viewModel::onTaskActionClick,
@@ -68,7 +67,6 @@ fun TasksScreenContent(
   tasks: List<Task>,
   options: List<String>,
   onAddClick: ((String) -> Unit) -> Unit,
-  onStatsClick: ((String) -> Unit) -> Unit,
   onSettingsClick: ((String) -> Unit) -> Unit,
   onTaskCheckChange: (Task) -> Unit,
   onTaskActionClick: ((String) -> Unit, Task, String) -> Unit,
@@ -92,10 +90,8 @@ fun TasksScreenContent(
       ActionToolbar(
         title = AppText.tasks,
         modifier = Modifier.toolbarActions(),
-        primaryActionIcon = AppIcon.ic_stats,
-        primaryAction = { onStatsClick(openScreen) },
-        secondaryActionIcon = AppIcon.ic_settings,
-        secondaryAction = { onSettingsClick(openScreen) }
+        primaryActionIcon = AppIcon.ic_settings,
+        primaryAction = { onSettingsClick(openScreen) }
       )
 
       Spacer(modifier = Modifier.smallSpacer())
@@ -131,7 +127,6 @@ fun TasksScreenPreview() {
       tasks = listOf(task),
       options = options,
       onAddClick = { },
-      onStatsClick = { },
       onSettingsClick = { },
       onTaskCheckChange = { },
       onTaskActionClick = { _, _, _ -> },

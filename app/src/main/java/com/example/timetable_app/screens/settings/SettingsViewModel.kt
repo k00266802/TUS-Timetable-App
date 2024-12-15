@@ -17,7 +17,6 @@ limitations under the License.
 package com.example.timetable_app.screens.settings
 
 import com.example.timetable_app.LOGIN_SCREEN
-import com.example.timetable_app.SIGN_UP_SCREEN
 import com.example.timetable_app.SPLASH_SCREEN
 import com.example.timetable_app.model.service.AccountService
 import com.example.timetable_app.model.service.LogService
@@ -37,7 +36,6 @@ class SettingsViewModel @Inject constructor(
 
   fun onLoginClick(openScreen: (String) -> Unit) = openScreen(LOGIN_SCREEN)
 
-  fun onSignUpClick(openScreen: (String) -> Unit) = openScreen(SIGN_UP_SCREEN)
 
   fun onSignOutClick(restartApp: (String) -> Unit) {
     launchCatching {

@@ -44,9 +44,7 @@ import com.example.timetable_app.common.snackbar.SnackbarManager
 import com.example.timetable_app.screens.edit_task.EditTaskScreen
 import com.example.timetable_app.screens.login.LoginScreen
 import com.example.timetable_app.screens.settings.SettingsScreen
-import com.example.timetable_app.screens.sign_up.SignUpScreen
 import com.example.timetable_app.screens.splash.SplashScreen
-import com.example.timetable_app.screens.stats.StatsScreen
 import com.example.timetable_app.screens.tasks.TasksScreen
 import com.example.timetable_app.ui.theme.AppTheme as TimetableAppTheme
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
@@ -83,7 +81,7 @@ fun TimetableApp() {
           startDestination = SPLASH_SCREEN,
           modifier = Modifier.padding(innerPaddingModifier)
         ) {
-          makeItSoGraph(appState)
+          timetableGraph(appState)
         }
       }
     }
@@ -122,7 +120,7 @@ fun resources(): Resources {
 }
 
 @ExperimentalMaterialApi
-fun NavGraphBuilder.makeItSoGraph(appState: TimetableAppState) {
+fun NavGraphBuilder.timetableGraph(appState: TimetableAppState) {
   composable(SPLASH_SCREEN) {
     SplashScreen(openAndPopUp = { route, popUp -> appState.navigateAndPopUp(route, popUp) })
   }
@@ -134,17 +132,11 @@ fun NavGraphBuilder.makeItSoGraph(appState: TimetableAppState) {
     )
   }
 
-  composable(STATS_SCREEN) {
-    StatsScreen()
-  }
 
   composable(LOGIN_SCREEN) {
     LoginScreen(openAndPopUp = { route, popUp -> appState.navigateAndPopUp(route, popUp) })
   }
 
-  composable(SIGN_UP_SCREEN) {
-    SignUpScreen(openAndPopUp = { route, popUp -> appState.navigateAndPopUp(route, popUp) })
-  }
 
   composable(TASKS_SCREEN) { TasksScreen(openScreen = { route -> appState.navigate(route) }) }
 

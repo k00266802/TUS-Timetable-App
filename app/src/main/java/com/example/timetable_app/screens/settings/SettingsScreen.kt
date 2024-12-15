@@ -50,7 +50,6 @@ fun SettingsScreen(
   SettingsScreenContent(
     uiState = uiState,
     onLoginClick = { viewModel.onLoginClick(openScreen) },
-    onSignUpClick = { viewModel.onSignUpClick(openScreen) },
     onSignOutClick = { viewModel.onSignOutClick(restartApp) },
     onDeleteMyAccountClick = { viewModel.onDeleteMyAccountClick(restartApp) }
   )
@@ -62,7 +61,6 @@ fun SettingsScreenContent(
   modifier: Modifier = Modifier,
   uiState: SettingsUiState,
   onLoginClick: () -> Unit,
-  onSignUpClick: () -> Unit,
   onSignOutClick: () -> Unit,
   onDeleteMyAccountClick: () -> Unit
 ) {
@@ -82,9 +80,6 @@ fun SettingsScreenContent(
         onLoginClick()
       }
 
-      RegularCardEditor(AppText.create_account, AppIcon.ic_create_account, "", Modifier.card()) {
-        onSignUpClick()
-      }
     } else {
       SignOutCard { onSignOutClick() }
       DeleteMyAccountCard { onDeleteMyAccountClick() }
@@ -157,7 +152,6 @@ fun SettingsScreenPreview() {
     SettingsScreenContent(
       uiState = uiState,
       onLoginClick = { },
-      onSignUpClick = { },
       onSignOutClick = { },
       onDeleteMyAccountClick = { }
     )

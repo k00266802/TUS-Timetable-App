@@ -19,7 +19,7 @@ package com.example.timetable_app.screens.tasks
 import androidx.compose.runtime.mutableStateOf
 import com.example.timetable_app.EDIT_TASK_SCREEN
 import com.example.timetable_app.SETTINGS_SCREEN
-import com.example.timetable_app.STATS_SCREEN
+
 import com.example.timetable_app.TASK_ID
 import com.example.timetable_app.model.Task
 import com.example.timetable_app.model.service.ConfigurationService
@@ -52,7 +52,6 @@ class TasksViewModel @Inject constructor(
 
   fun onSettingsClick(openScreen: (String) -> Unit) = openScreen(SETTINGS_SCREEN)
 
-  fun onStatsClick(openScreen: (String) -> Unit) = openScreen(STATS_SCREEN)
 
   fun onTaskActionClick(openScreen: (String) -> Unit, task: Task, action: String) {
     when (TaskActionOption.Companion.getByTitle(action)) {
