@@ -22,7 +22,7 @@ import com.example.timetable_app.TASKS_SCREEN
 import com.example.timetable_app.model.service.AccountService
 import com.example.timetable_app.model.service.ConfigurationService
 import com.example.timetable_app.model.service.LogService
-import com.example.timetable_app.screens.MakeItSoViewModel
+import com.example.timetable_app.screens.TimetableAppViewModel
 import com.google.firebase.auth.FirebaseAuthException
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -32,7 +32,7 @@ class SplashViewModel @Inject constructor(
   configurationService: ConfigurationService,
   private val accountService: AccountService,
   logService: LogService
-) : MakeItSoViewModel(logService) {
+) : TimetableAppViewModel(logService) {
   val showError = mutableStateOf(false)
 
   init {

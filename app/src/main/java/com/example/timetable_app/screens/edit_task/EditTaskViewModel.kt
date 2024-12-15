@@ -23,7 +23,7 @@ import com.example.timetable_app.common.ext.idFromParameter
 import com.example.timetable_app.model.Task
 import com.example.timetable_app.model.service.LogService
 import com.example.timetable_app.model.service.StorageService
-import com.example.timetable_app.screens.MakeItSoViewModel
+import com.example.timetable_app.screens.TimetableAppViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import java.text.SimpleDateFormat
 import java.util.*
@@ -34,7 +34,7 @@ class EditTaskViewModel @Inject constructor(
   savedStateHandle: SavedStateHandle,
   logService: LogService,
   private val storageService: StorageService,
-) : MakeItSoViewModel(logService) {
+) : TimetableAppViewModel(logService) {
   val task = mutableStateOf(Task())
 
   init {

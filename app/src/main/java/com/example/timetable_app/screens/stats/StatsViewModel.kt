@@ -19,7 +19,7 @@ package com.example.timetable_app.screens.stats
 import androidx.compose.runtime.mutableStateOf
 import com.example.timetable_app.model.service.LogService
 import com.example.timetable_app.model.service.StorageService
-import com.example.timetable_app.screens.MakeItSoViewModel
+import com.example.timetable_app.screens.TimetableAppViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -27,7 +27,7 @@ import javax.inject.Inject
 class StatsViewModel @Inject constructor(
   logService: LogService,
   private val storageService: StorageService
-) : MakeItSoViewModel(logService) {
+) : TimetableAppViewModel(logService) {
   val uiState = mutableStateOf(StatsUiState())
 
   init {

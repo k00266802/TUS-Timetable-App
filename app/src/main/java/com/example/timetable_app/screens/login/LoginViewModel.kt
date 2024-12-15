@@ -24,7 +24,7 @@ import com.example.timetable_app.common.ext.isValidEmail
 import com.example.timetable_app.common.snackbar.SnackbarManager
 import com.example.timetable_app.model.service.AccountService
 import com.example.timetable_app.model.service.LogService
-import com.example.timetable_app.screens.MakeItSoViewModel
+import com.example.timetable_app.screens.TimetableAppViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -32,7 +32,7 @@ import javax.inject.Inject
 class LoginViewModel @Inject constructor(
   private val accountService: AccountService,
   logService: LogService
-) : MakeItSoViewModel(logService) {
+) : TimetableAppViewModel(logService) {
   var uiState = mutableStateOf(LoginUiState())
     private set
 

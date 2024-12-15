@@ -22,8 +22,7 @@ import com.example.timetable_app.SPLASH_SCREEN
 import com.example.timetable_app.model.service.AccountService
 import com.example.timetable_app.model.service.LogService
 import com.example.timetable_app.model.service.StorageService
-import com.example.timetable_app.model.User
-import com.example.timetable_app.screens.MakeItSoViewModel
+import com.example.timetable_app.screens.TimetableAppViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.flow.map
@@ -33,7 +32,7 @@ class SettingsViewModel @Inject constructor(
   logService: LogService,
   private val accountService: AccountService,
   private val storageService: StorageService
-) : MakeItSoViewModel(logService) {
+) : TimetableAppViewModel(logService) {
   val uiState = accountService.currentUser.map { SettingsUiState(it.isAnonymous) }
 
   fun onLoginClick(openScreen: (String) -> Unit) = openScreen(LOGIN_SCREEN)
