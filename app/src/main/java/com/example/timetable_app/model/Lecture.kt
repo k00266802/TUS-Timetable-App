@@ -20,16 +20,13 @@ import com.google.firebase.firestore.DocumentId
 import com.google.firebase.firestore.ServerTimestamp
 import java.util.Date
 
-data class Task(
+data class Lecture(
   @DocumentId val id: String = "",
   @ServerTimestamp val createdAt: Date = Date(),
-  val title: String = "",
-  val priority: String = "",
-  val dueDate: String = "",
-  val dueTime: String = "",
+  val lectureName: String = "",
+  val startTime: Date = Date(),
+  val endTime: Date = Date(),
   val description: String = "",
-  val url: String = "",
-  val flag: Boolean = false,
-  val completed: Boolean = false,
+  val room: String = "",
   val userId: String = ""
 )

@@ -37,15 +37,13 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import androidx.navigation.navArgument
 import com.example.timetable_app.common.composable.PermissionDialog
 import com.example.timetable_app.common.composable.RationaleDialog
 import com.example.timetable_app.common.snackbar.SnackbarManager
-import com.example.timetable_app.screens.edit_task.EditTaskScreen
 import com.example.timetable_app.screens.login.LoginScreen
 import com.example.timetable_app.screens.settings.SettingsScreen
 import com.example.timetable_app.screens.splash.SplashScreen
-import com.example.timetable_app.screens.tasks.TasksScreen
+import com.example.timetable_app.screens.lectures.TasksScreen
 import com.example.timetable_app.ui.theme.AppTheme as TimetableAppTheme
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import com.google.accompanist.permissions.isGranted
@@ -140,15 +138,4 @@ fun NavGraphBuilder.timetableGraph(appState: TimetableAppState) {
 
   composable(TASKS_SCREEN) { TasksScreen(openScreen = { route -> appState.navigate(route) }) }
 
-  composable(
-    route = "${EDIT_TASK_SCREEN}${TASK_ID_ARG}",
-    arguments = listOf(navArgument(TASK_ID) {
-      nullable = true
-      defaultValue = null
-    })
-  ) {
-    EditTaskScreen(
-      popUpScreen = { appState.popUp() }
-    )
-  }
 }

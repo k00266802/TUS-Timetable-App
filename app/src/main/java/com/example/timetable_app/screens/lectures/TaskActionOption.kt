@@ -14,25 +14,27 @@ See the License for the specific language governing permissions and
 limitations under the License.
  */
 
-package com.example.timetable_app.screens.edit_task
+package com.example.timetable_app.screens.lectures
 
-enum class EditFlagOption {
-  On,
-  Off;
+enum class TaskActionOption(val title: String) {
+  EditTask("Edit lecture"),
+  ToggleFlag("Toggle flag"),
+  DeleteTask("Delete lecture");
 
   companion object {
-    fun getByCheckedState(checkedState: Boolean?): EditFlagOption {
-      val hasFlag = checkedState ?: false
-      return if (hasFlag) On else Off
+    fun getByTitle(title: String): TaskActionOption {
+      values().forEach { action -> if (title == action.title) return action }
+
+      return EditTask
     }
 
-    fun getBooleanValue(flagOption: String): Boolean {
-      return flagOption == On.name
-    }
-
-    fun getOptions(): List<String> {
+    fun getOptions(hasEditOption: Boolean): List<String> {
       val options = mutableListOf<String>()
-      values().forEach { flagOption -> options.add(flagOption.name) }
+      values().forEach { taskAction ->
+        if (hasEditOption || taskAction != EditTask) {
+          options.add(taskAction.title)
+        }
+      }
       return options
     }
   }

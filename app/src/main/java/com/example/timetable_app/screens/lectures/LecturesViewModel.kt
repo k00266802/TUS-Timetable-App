@@ -14,14 +14,13 @@ See the License for the specific language governing permissions and
 limitations under the License.
  */
 
-package com.example.timetable_app.screens.tasks
+package com.example.timetable_app.screens.lectures
 
 import androidx.compose.runtime.mutableStateOf
 import com.example.timetable_app.EDIT_TASK_SCREEN
 import com.example.timetable_app.SETTINGS_SCREEN
 
-import com.example.timetable_app.TASK_ID
-import com.example.timetable_app.model.Task
+import com.example.timetable_app.model.Lecture
 import com.example.timetable_app.model.service.ConfigurationService
 import com.example.timetable_app.model.service.LogService
 import com.example.timetable_app.model.service.StorageService
@@ -30,42 +29,35 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class TasksViewModel @Inject constructor(
+class LecturesViewModel @Inject constructor(
   logService: LogService,
   private val storageService: StorageService,
   private val configurationService: ConfigurationService
 ) : TimetableAppViewModel(logService) {
   val options = mutableStateOf<List<String>>(listOf())
 
-  val tasks = storageService.tasks
+  val lectures = storageService.lectures
 
   fun loadTaskOptions() {
     val hasEditOption = configurationService.isShowTaskEditButtonConfig
     options.value = TaskActionOption.Companion.getOptions(hasEditOption)
   }
 
-  fun onTaskCheckChange(task: Task) {
-    launchCatching { storageService.update(task.copy(completed = !task.completed)) }
-  }
+//  fun onTaskCheckChange(lecture: Lecture) {
+//    launchCatching { storageService.update(lecture.copy(completed = !lecture.completed)) }
+//  }
 
   fun onAddClick(openScreen: (String) -> Unit) = openScreen(EDIT_TASK_SCREEN)
 
   fun onSettingsClick(openScreen: (String) -> Unit) = openScreen(SETTINGS_SCREEN)
 
 
-  fun onTaskActionClick(openScreen: (String) -> Unit, task: Task, action: String) {
-    when (TaskActionOption.Companion.getByTitle(action)) {
-      TaskActionOption.EditTask -> openScreen("$EDIT_TASK_SCREEN?$TASK_ID={${task.id}}")
-      TaskActionOption.ToggleFlag -> onFlagTaskClick(task)
-      TaskActionOption.DeleteTask -> onDeleteTaskClick(task)
-    }
-  }
 
-  private fun onFlagTaskClick(task: Task) {
-    launchCatching { storageService.update(task.copy(flag = !task.flag)) }
-  }
+//  private fun onFlagTaskClick(lecture: Lecture) {
+//    launchCatching { storageService.update(lecture.copy(flag = !lecture.flag)) }
+//  }
 
-  private fun onDeleteTaskClick(task: Task) {
-    launchCatching { storageService.delete(task.id) }
+  private fun onDeleteTaskClick(lecture: Lecture) {
+    launchCatching { storageService.delete(lecture.id) }
   }
 }

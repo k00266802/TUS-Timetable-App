@@ -20,6 +20,7 @@ import androidx.compose.runtime.mutableStateOf
 import com.example.timetable_app.LOGIN_SCREEN
 import com.example.timetable_app.R.string as AppText
 import com.example.timetable_app.SETTINGS_SCREEN
+import com.example.timetable_app.TASKS_SCREEN
 import com.example.timetable_app.common.ext.isValidEmail
 import com.example.timetable_app.common.snackbar.SnackbarManager
 import com.example.timetable_app.model.service.AccountService
@@ -62,7 +63,7 @@ class LoginViewModel @Inject constructor(
 
     launchCatching {
       accountService.authenticate(email, password)
-      openAndPopUp(SETTINGS_SCREEN, LOGIN_SCREEN)
+      openAndPopUp(TASKS_SCREEN, LOGIN_SCREEN)
     }
   }
 

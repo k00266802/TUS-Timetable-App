@@ -22,10 +22,10 @@
     <string name="password_match_error">Passwords do not match.</string>
 
     <!-- TasksScreen -->
-    <string name="tasks">Tasks</string>
+    <string name="lectures">Tasks</string>
 
     <!-- EditTaskScreen -->
-    <string name="edit_task">Edit your task</string>
+    <string name="edit_task">Edit your lecture</string>
     <string name="title">Title</string>
     <string name="description">Description</string>
     <string name="url">URL</string>
@@ -41,15 +41,15 @@
 
     <!-- StatsScreen -->
     <string name="stats">Statistics</string>
-    <string name="completed_tasks">Completed tasks</string>
-    <string name="important_completed_tasks">Important completed tasks \n (high priority or flagged)</string>
-    <string name="medium_high_tasks_to_complete">Medium and high priority tasks to complete</string>
+    <string name="completed_tasks">Completed lectures</string>
+    <string name="important_completed_tasks">Important completed lectures \n (high priority or flagged)</string>
+    <string name="medium_high_tasks_to_complete">Medium and high priority lectures to complete</string>
 
     <!-- Dialogs -->
     <string name="sign_out_title">Sign out?</string>
-    <string name="sign_out_description">You will have to sign in again to see your tasks.</string>
+    <string name="sign_out_description">You will have to sign in again to see your lectures.</string>
     <string name="delete_account_title">Delete account?</string>
-    <string name="delete_account_description">You will lose all your tasks and your account will be deleted. This action is irreversible.</string>
+    <string name="delete_account_description">You will lose all your lectures and your account will be deleted. This action is irreversible.</string>
 
     <!-- FCM -->
     <string name="default_notification_channel_id" translatable="false">fcm_default_channel</string>

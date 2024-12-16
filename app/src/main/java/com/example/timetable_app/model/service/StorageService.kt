@@ -16,16 +16,13 @@ limitations under the License.
 
 package com.example.timetable_app.model.service
 
-import com.example.timetable_app.model.Task
+import com.example.timetable_app.model.Lecture
 import kotlinx.coroutines.flow.Flow
 
 interface StorageService {
-  val tasks: Flow<List<Task>>
-  suspend fun getTask(taskId: String): Task?
-  suspend fun save(task: Task): String
-  suspend fun update(task: Task)
+  val lectures: Flow<List<Lecture>>
+  suspend fun getLecture(taskId: String): Lecture?
+  suspend fun save(lecture: Lecture): String
+  suspend fun update(lecture: Lecture)
   suspend fun delete(taskId: String)
-  suspend fun getCompletedTasksCount(): Int
-  suspend fun getImportantCompletedTasksCount(): Int
-  suspend fun getMediumHighTasksToCompleteCount(): Int
 }
