@@ -48,7 +48,7 @@ class StorageServiceImpl @Inject constructor(
         firestore
           .collection(LECTURE_COLLECTION)
           .whereEqualTo(USER_ID_FIELD, user.id)
-          .orderBy(START_TIME_FIELD, Query.Direction.DESCENDING)
+          .orderBy(START_TIME_FIELD, Query.Direction.ASCENDING)
           .dataObjects()
       }
 
