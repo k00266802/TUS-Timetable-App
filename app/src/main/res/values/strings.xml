@@ -22,7 +22,7 @@
     <string name="password_match_error">Passwords do not match.</string>
 
     <!-- TasksScreen -->
-    <string name="lectures">Tasks</string>
+    <string name="lectures">Lectures</string>
 
     <!-- EditTaskScreen -->
     <string name="edit_task">Edit your lecture</string>
@@ -33,6 +33,8 @@
     <string name="time">Time</string>
     <string name="flag">Flag</string>
     <string name="priority">Priority</string>
+
+    <string name="campusMap">Campus Map</string>
 
     <!-- SettingsScreen -->
     <string name="settings">Settings</string>

@@ -20,8 +20,6 @@ import android.annotation.SuppressLint
 import android.util.Log
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
@@ -38,17 +36,17 @@ import com.example.timetable_app.ui.theme.AppTheme as TimetableAppTheme
 
 @Composable
 @ExperimentalMaterialApi
-fun TasksScreen(
+fun LecturesScreen(
   openScreen: (String) -> Unit,
   viewModel: LecturesViewModel = hiltViewModel()
 ) {
   val lectures = viewModel.lectures.collectAsStateWithLifecycle(emptyList())
   val options by viewModel.options
 
-  TasksScreenContent(
+  LecturesScreenContent(
     lectures = lectures.value,
     options = options,
-    onAddClick = viewModel::onAddClick,
+    onMapClick = viewModel::onMapClick,
     onSettingsClick = viewModel::onSettingsClick,
     openScreen = openScreen
   )
@@ -59,25 +57,15 @@ fun TasksScreen(
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 @ExperimentalMaterialApi
-fun TasksScreenContent(
+fun LecturesScreenContent(
   modifier: Modifier = Modifier,
   lectures: List<Lecture>,
   options: List<String>,
-  onAddClick: ((String) -> Unit) -> Unit,
+  onMapClick: ((String) -> Unit) -> Unit,
   onSettingsClick: ((String) -> Unit) -> Unit,
   openScreen: (String) -> Unit
 ) {
   Scaffold(
-//    floatingActionButton = {
-//      FloatingActionButton(
-//        onClick = { onAddClick(openScreen) },
-//        backgroundColor = MaterialTheme.colors.primary,
-//        contentColor = MaterialTheme.colors.onPrimary,
-//        modifier = modifier.padding(16.dp)
-//      ) {
-//        Icon(Icons.Filled.Add, "Add")
-//      }
-//    }
   ) {
     Column(modifier = Modifier
       .fillMaxWidth()
@@ -86,7 +74,9 @@ fun TasksScreenContent(
         title = AppText.lectures,
         modifier = Modifier.toolbarActions(),
         primaryActionIcon = AppIcon.ic_settings,
-        primaryAction = { onSettingsClick(openScreen) }
+        primaryAction = { onSettingsClick(openScreen) },
+        secondaryAction = { onMapClick(openScreen) },
+        secondaryActionIcon = AppIcon.ic_map_24px
       )
 
       Spacer(modifier = Modifier.smallSpacer())
@@ -113,7 +103,7 @@ fun TasksScreenContent(
 @Preview(showBackground = true)
 @ExperimentalMaterialApi
 @Composable
-fun TasksScreenPreview() {
+fun LecturesScreenPreview() {
   val lecture = Lecture(
     lectureName = "Lecture title",
     description = "Lecture Description"
@@ -122,10 +112,10 @@ fun TasksScreenPreview() {
   val options = TaskActionOption.Companion.getOptions(hasEditOption = true)
 
   TimetableAppTheme {
-    TasksScreenContent(
+    LecturesScreenContent(
       lectures = listOf(lecture),
       options = options,
-      onAddClick = { },
+      onMapClick = { },
       onSettingsClick = { },
       openScreen = { }
     )

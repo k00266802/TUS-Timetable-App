@@ -17,6 +17,7 @@ limitations under the License.
 package com.example.timetable_app.screens.lectures
 
 import androidx.compose.runtime.mutableStateOf
+import com.example.timetable_app.CAMPUS_MAP_SCREEN
 import com.example.timetable_app.EDIT_TASK_SCREEN
 import com.example.timetable_app.SETTINGS_SCREEN
 
@@ -47,7 +48,7 @@ class LecturesViewModel @Inject constructor(
 //    launchCatching { storageService.update(lecture.copy(completed = !lecture.completed)) }
 //  }
 
-  fun onAddClick(openScreen: (String) -> Unit) = openScreen(EDIT_TASK_SCREEN)
+  fun onMapClick(openScreen: (String) -> Unit) = openScreen(CAMPUS_MAP_SCREEN)
 
   fun onSettingsClick(openScreen: (String) -> Unit) = openScreen(SETTINGS_SCREEN)
 

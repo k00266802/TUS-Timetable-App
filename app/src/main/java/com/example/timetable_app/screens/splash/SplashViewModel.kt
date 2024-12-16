@@ -19,7 +19,7 @@ package com.example.timetable_app.screens.splash
 import androidx.compose.runtime.mutableStateOf
 import com.example.timetable_app.LOGIN_SCREEN
 import com.example.timetable_app.SPLASH_SCREEN
-import com.example.timetable_app.TASKS_SCREEN
+import com.example.timetable_app.LECTURES_SCREEN
 import com.example.timetable_app.model.service.AccountService
 import com.example.timetable_app.model.service.ConfigurationService
 import com.example.timetable_app.model.service.LogService

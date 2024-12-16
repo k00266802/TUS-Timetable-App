@@ -41,9 +41,10 @@ import com.example.timetable_app.common.composable.PermissionDialog
 import com.example.timetable_app.common.composable.RationaleDialog
 import com.example.timetable_app.common.snackbar.SnackbarManager
 import com.example.timetable_app.screens.login.LoginScreen
+import com.example.timetable_app.screens.campus_map.CampusScreen
 import com.example.timetable_app.screens.settings.SettingsScreen
 import com.example.timetable_app.screens.splash.SplashScreen
-import com.example.timetable_app.screens.lectures.TasksScreen
+import com.example.timetable_app.screens.lectures.LecturesScreen
 import com.example.timetable_app.ui.theme.AppTheme as TimetableAppTheme
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import com.google.accompanist.permissions.isGranted
@@ -135,7 +136,10 @@ fun NavGraphBuilder.timetableGraph(appState: TimetableAppState) {
     LoginScreen(openAndPopUp = { route, popUp -> appState.navigateAndPopUp(route, popUp) })
   }
 
+  composable(CAMPUS_MAP_SCREEN){
+    CampusScreen(openScreen = { route -> appState.navigate(route) })
+  }
 
-  composable(TASKS_SCREEN) { TasksScreen(openScreen = { route -> appState.navigate(route) }) }
+  composable(LECTURES_SCREEN) { LecturesScreen(openScreen = { route -> appState.navigate(route) }) }
 
 }
