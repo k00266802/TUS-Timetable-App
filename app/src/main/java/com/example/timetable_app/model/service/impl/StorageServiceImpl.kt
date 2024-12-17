@@ -16,6 +16,7 @@ limitations under the License.
 
 package com.example.timetable_app.model.service.impl
 
+import com.example.timetable_app.model.Campus
 import com.example.timetable_app.model.Priority
 import com.example.timetable_app.model.Lecture
 import com.example.timetable_app.model.service.AccountService
@@ -31,6 +32,8 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import javax.inject.Inject
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flatMapLatest
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.mapLatest
 import kotlinx.coroutines.tasks.await
 
 class StorageServiceImpl @Inject constructor(
@@ -52,8 +55,12 @@ class StorageServiceImpl @Inject constructor(
           .dataObjects()
       }
 
-  override suspend fun getLecture(taskId: String): Lecture? =
-    firestore.collection(LECTURE_COLLECTION).document(taskId).get().await().toObject()
+  @OptIn(ExperimentalCoroutinesApi::class)
+  override suspend fun getCampus(): Campus? =
+    firestore.collection(CAMPUS_COLLECTION).whereEqualTo(USER_ID_FIELD, auth.currentUserId).get().await().first().toObject<Campus>()
+
+  override suspend fun getLecture(lectureId: String): Lecture? =
+    firestore.collection(LECTURE_COLLECTION).document(lectureId).get().await().toObject()
 
   override suspend fun save(lecture: Lecture): String =
     trace(SAVE_LECTURE_TRACE) {
@@ -66,8 +73,8 @@ class StorageServiceImpl @Inject constructor(
       firestore.collection(LECTURE_COLLECTION).document(lecture.id).set(lecture).await()
     }
 
-  override suspend fun delete(taskId: String) {
-    firestore.collection(LECTURE_COLLECTION).document(taskId).delete().await()
+  override suspend fun delete(lectureId: String) {
+    firestore.collection(LECTURE_COLLECTION).document(lectureId).delete().await()
   }
   
 
@@ -75,10 +82,12 @@ class StorageServiceImpl @Inject constructor(
     private const val USER_ID_FIELD = "userId"
     private const val DESCRIPTION_FIELD = "description"
     private const val ROOM_FIELD = "room"
+    private const val TEST = "wBNqRyQBTOCTXIwdmcZK"
     private const val LECTURE_NAME_FIELD = "lectureName"
     private const val START_TIME_FIELD = "startTime"
     private const val END_TIME_FIELD = "endTime"
     private const val LECTURE_COLLECTION = "lectures"
+    private const val CAMPUS_COLLECTION = "campus"
     private const val SAVE_LECTURE_TRACE = "saveTask"
     private const val UPDATE_LECTURE_TRACE = "updateTask"
   }

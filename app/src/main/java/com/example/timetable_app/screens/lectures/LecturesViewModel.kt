@@ -16,6 +16,7 @@ limitations under the License.
 
 package com.example.timetable_app.screens.lectures
 
+import android.util.Log
 import androidx.compose.runtime.mutableStateOf
 import com.example.timetable_app.CAMPUS_MAP_SCREEN
 import com.example.timetable_app.EDIT_TASK_SCREEN

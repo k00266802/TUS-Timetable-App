@@ -17,15 +17,14 @@ limitations under the License.
 package com.example.timetable_app.model
 
 import com.google.firebase.firestore.DocumentId
+import com.google.firebase.firestore.GeoPoint
 import com.google.firebase.firestore.ServerTimestamp
 import java.util.Date
 
-data class Lecture(
+data class Campus(
   @DocumentId val id: String = "",
-  val lectureName: String = "",
-  val startTime: Date = Date(),
-  val endTime: Date = Date(),
-  val description: String = "",
-  val room: String = "",
+  val name: String = "",
+  val lat: Double = 0.0,
+  val lng: Double = 0.0,
   val userId: String = ""
 )

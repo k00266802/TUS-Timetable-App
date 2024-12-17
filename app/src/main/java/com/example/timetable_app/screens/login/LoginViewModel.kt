@@ -42,6 +42,7 @@ class LoginViewModel @Inject constructor(
   private val password
     get() = uiState.value.password
 
+
   fun onEmailChange(newValue: String) {
     uiState.value = uiState.value.copy(email = newValue)
   }
